@@ -1,0 +1,144 @@
+/* ==================================================
+   Collection guide — universal copy component
+   ================================================== */
+
+.guide-copy-panel {
+  --guide-copy-background: #f5f5f5;
+  --guide-copy-background-active: #ececec;
+  --guide-copy-border: transparent;
+  --guide-copy-border-active: transparent;
+  --guide-copy-muted: rgba(0, 0, 0, .666);
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  margin-block: clamp(1rem, 2vw, 1.75rem);
+  color: inherit;
+}
+
+.guide-copy-group {
+  display: grid;
+  gap: .5rem;
+}
+
+.guide-copy-heading {
+  margin: 0 0 .15rem;
+  color: var(--guide-copy-muted);
+  font-size: var(--font-size-paragraph-small, .875rem);
+  font-weight: inherit;
+  line-height: 1.2;
+}
+
+.guide-copy-list {
+  display: grid;
+  gap: .4rem;
+}
+
+.guide-copy-list--choices {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.guide-copy-item {
+  appearance: none;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 1rem;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: .8rem .9rem;
+  border: 1px solid var(--guide-copy-border);
+  border-radius: 0;
+  background: var(--guide-copy-background);
+  box-shadow: none;
+  color: inherit;
+  font: inherit;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  letter-spacing: normal;
+  line-height: 1.2;
+  text-align: left;
+  text-transform: none;
+  cursor: copy;
+  transition: background-color .15s ease, border-color .15s ease;
+}
+
+.guide-copy-item:hover,
+.guide-copy-item.is-copied {
+  border-color: var(--guide-copy-border-active);
+  background: var(--guide-copy-background-active);
+}
+
+.guide-copy-item:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.guide-copy-code {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  overflow-wrap: anywhere;
+  color: inherit;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: clamp(.78rem, .72rem + .16vw, .92rem);
+  line-height: 1.45;
+  white-space: normal;
+}
+
+.guide-copy-prefix {
+  font-weight: 700;
+}
+
+.guide-copy-placeholder,
+.guide-copy-action {
+  color: var(--guide-copy-muted);
+}
+
+.guide-copy-action {
+  font-size: .7rem;
+  line-height: 1.45;
+  white-space: nowrap;
+}
+
+.guide-copy-item.is-copied .guide-copy-action {
+  color: inherit;
+}
+
+@media screen and (max-width: 767px) {
+  .guide-copy-list--choices {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .guide-copy-item {
+    padding: .75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .guide-copy-item {
+    transition: none;
+  }
+}
+
+/* Guide page typography — activated only when the component is present. */
+
+body.has-guide-copy #page :is(p, h1, h2, h3, h4) {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body.has-guide-copy #page p {
+  font-size: var(--font-size-paragraph-normal, .875rem);
+}
+
+body.has-guide-copy #page strong {
+  font-weight: 500;
+}
+
+body.has-guide-copy #page h4 {
+  padding-block-start: 2rem;
+  border-top: 1px solid var(--tweak-line-block-line-color);
+  font-weight: 800;
+  text-transform: uppercase;
+}
