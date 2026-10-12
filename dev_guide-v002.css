@@ -106,6 +106,46 @@
   color: inherit;
 }
 
+/* Non-copyable examples shown below a copyable field list. */
+
+.guide-copy-examples {
+  display: grid;
+  gap: .35rem;
+  margin-top: .15rem;
+}
+
+.guide-copy-examples-label {
+  color: var(--guide-copy-muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: .7rem;
+  font-weight: inherit;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.guide-copy-example-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem 1rem;
+}
+
+.guide-copy-example-list--stacked {
+  display: grid;
+}
+
+.guide-copy-example {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  overflow-wrap: anywhere;
+  color: var(--guide-copy-muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: clamp(.78rem, .72rem + .16vw, .92rem);
+  line-height: 1.45;
+  white-space: normal;
+}
+
 @media screen and (max-width: 767px) {
   .guide-copy-list--choices {
     grid-template-columns: minmax(0, 1fr);
