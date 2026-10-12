@@ -8,6 +8,10 @@
   --guide-copy-border: transparent;
   --guide-copy-border-active: transparent;
   --guide-copy-muted: rgba(0, 0, 0, .666);
+  --guide-copy-font-family-monospace: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  --guide-copy-font-size-heading: .75rem;
+  --guide-copy-font-size-code: .8125rem;
+  --guide-copy-font-size-action: .6875rem;
   display: grid;
   gap: clamp(1rem, 2vw, 1.5rem);
   margin-block: clamp(1rem, 2vw, 1.75rem);
@@ -22,7 +26,7 @@
 .guide-copy-heading {
   margin: 0 0 .15rem;
   color: var(--guide-copy-muted);
-  font-size: var(--font-size-paragraph-small, .875rem);
+  font-size: var(--guide-copy-font-size-heading);
   font-weight: inherit;
   line-height: 1.2;
 }
@@ -53,7 +57,7 @@
   box-shadow: none;
   color: inherit;
   font: inherit;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-family: var(--guide-copy-font-family-monospace);
   letter-spacing: normal;
   line-height: 1.2;
   text-align: left;
@@ -81,9 +85,9 @@
   background: transparent;
   overflow-wrap: anywhere;
   color: inherit;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-  font-size: clamp(.78rem, .72rem + .16vw, .92rem);
-  line-height: 1.45;
+  font-family: var(--guide-copy-font-family-monospace);
+  font-size: var(--guide-copy-font-size-code);
+  line-height: 1.5;
   white-space: normal;
 }
 
@@ -97,8 +101,8 @@
 }
 
 .guide-copy-action {
-  font-size: .7rem;
-  line-height: 1.45;
+  font-size: var(--guide-copy-font-size-action);
+  line-height: 1.5;
   white-space: nowrap;
 }
 
@@ -116,21 +120,29 @@
 
 .guide-copy-examples-label {
   color: var(--guide-copy-muted);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-  font-size: .7rem;
+  font-family: var(--guide-copy-font-family-monospace);
+  font-size: var(--guide-copy-font-size-action);
   font-weight: inherit;
-  line-height: 1.45;
+  line-height: 1.5;
   margin: 0;
 }
 
 .guide-copy-example-list {
   display: flex;
   flex-wrap: wrap;
-  gap: .35rem 1rem;
+  gap: .35rem 0;
 }
 
 .guide-copy-example-list--stacked {
   display: grid;
+}
+
+.guide-copy-example-list:not(.guide-copy-example-list--stacked) >
+.guide-copy-example + .guide-copy-example::before {
+  content: '\00b7';
+  display: inline-block;
+  margin-inline: .75rem;
+  color: var(--guide-copy-muted);
 }
 
 .guide-copy-example {
@@ -140,9 +152,9 @@
   background: transparent;
   overflow-wrap: anywhere;
   color: var(--guide-copy-muted);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-  font-size: clamp(.78rem, .72rem + .16vw, .92rem);
-  line-height: 1.45;
+  font-family: var(--guide-copy-font-family-monospace);
+  font-size: var(--guide-copy-font-size-code);
+  line-height: 1.5;
   white-space: normal;
 }
 
@@ -169,7 +181,13 @@ body.has-guide-copy #page :is(p, h1, h2, h3, h4) {
 }
 
 body.has-guide-copy #page p {
-  font-size: var(--font-size-paragraph-normal, .875rem);
+  font-size: .875rem;
+}
+
+body.has-guide-copy #page .guide-copy-examples-label {
+  font-family: var(--guide-copy-font-family-monospace);
+  font-size: var(--guide-copy-font-size-action);
+  line-height: 1.5;
 }
 
 body.has-guide-copy #page strong {
