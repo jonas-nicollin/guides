@@ -9,9 +9,9 @@
   --guide-copy-border-active: transparent;
   --guide-copy-muted: rgba(0, 0, 0, .666);
   --guide-copy-font-family-monospace: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-  --guide-copy-font-size-heading: .75rem;
-  --guide-copy-font-size-code: .8125rem;
-  --guide-copy-font-size-action: .6875rem;
+  --guide-copy-font-size-heading: var(--font-size-paragraph-small);
+  --guide-copy-font-size-code: var(--font-size-paragraph-small);
+  --guide-copy-font-size-action: var(--font-size-paragraph-small);
   display: grid;
   gap: clamp(1rem, 2vw, 1.5rem);
   margin-block: clamp(1rem, 2vw, 1.75rem);
@@ -176,12 +176,53 @@
 
 /* Guide page typography — activated only when the component is present. */
 
+body.has-guide-copy {
+  --font-size-paragraph-small: clamp(.75rem, .666rem + .2vw, 1rem);
+  --font-size-paragraph-normal: clamp(1rem, .9rem + .2vw, 1.2rem);
+  --font-size-paragraph-large: clamp(1.2rem, 1rem + .333vw, 1.5rem);
+  --font-size-heading-h4: var(--font-size-paragraph-normal);
+  --font-size-heading-h3: clamp(1.2rem, 1rem + .5vw, 1.5rem);
+  --font-size-heading-h2: clamp(1.5rem, 1.2rem + 1vw, 2.1rem);
+  --font-size-heading-h1: clamp(2.1rem, 1.5rem + 1.5vw, 3rem);
+}
+
+@media screen and (max-width: 767px) {
+  body.has-guide-copy {
+    --font-size-paragraph-normal: clamp(.8rem, .75rem + .2vw, 1rem);
+    --font-size-paragraph-large: clamp(1rem, .9rem + .2vw, 1.2rem);
+    --font-size-heading-h4: var(--font-size-paragraph-normal);
+    --font-size-heading-h2: clamp(1.2rem, 1rem + .5vw, 1.5rem);
+    --font-size-heading-h1: clamp(1.5rem, 1.2rem + 1vw, 2.1rem);
+  }
+}
+
 body.has-guide-copy #page :is(p, h1, h2, h3, h4) {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 body.has-guide-copy #page p {
-  font-size: .875rem;
+  font-size: var(--font-size-paragraph-normal);
+  line-height: 1.5;
+}
+
+body.has-guide-copy #page h1 {
+  font-size: var(--font-size-heading-h1);
+}
+
+body.has-guide-copy #page h2 {
+  font-size: var(--font-size-heading-h2);
+}
+
+body.has-guide-copy #page h3 {
+  font-size: var(--font-size-heading-h3);
+}
+
+body.has-guide-copy #page h4 {
+  padding-block-start: 2rem;
+  border-top: 1px solid var(--tweak-line-block-line-color);
+  font-size: var(--font-size-heading-h4);
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
 body.has-guide-copy #page .guide-copy-examples-label {
@@ -192,11 +233,4 @@ body.has-guide-copy #page .guide-copy-examples-label {
 
 body.has-guide-copy #page strong {
   font-weight: 500;
-}
-
-body.has-guide-copy #page h4 {
-  padding-block-start: 2rem;
-  border-top: 1px solid var(--tweak-line-block-line-color);
-  font-weight: 800;
-  text-transform: uppercase;
 }
